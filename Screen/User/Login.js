@@ -7,10 +7,13 @@ import * as actions from '../../store/actions/index';
 import {
     View,
     Text,
-    TextInput,
-    Button,
     ActivityIndicator
 } from 'react-native';
+
+import { 
+    Button,
+    TextInput 
+} from 'react-native-paper';
 
 class Login extends React.Component {
     state = {
@@ -46,23 +49,25 @@ class Login extends React.Component {
         }
 
         return (
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text>Login Screen</Text>
+            <View style={{ flex: 1, padding: 15/*, alignItems: 'center', justifyContent: 'center' */ }}>
                 <TextInput
-                    placeholder="Correo electrónico"
+                    label="Correo electrónico"
                     keyboardType="email-address"
                     onChangeText={this.onCorreoChange} />
                 <TextInput
-                    placeholder="Contraseña"
+                    label="Contraseña"
                     secureTextEntry={true}
                     onChangeText={this.onPasswordChange} />
                 {error}
-                {this.props.loading ? <ActivityIndicator size="large" color="#0000ff" /> : <Button
-                    title="Login"
-                    onPress={() => {
-                        this.props.onAuth(this.state.correo, this.state.password);
-                    }}
-                />}
+                {this.props.loading ?
+                    <ActivityIndicator size="large" color="#0000ff" /> :
+                    <Button
+                        mode="contained"
+                        title="Login"
+                        onPress={() => {
+                            this.props.onAuth(this.state.correo, this.state.password);
+                        }}
+                    >Login</Button>}
             </View>
         );
     }

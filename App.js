@@ -48,16 +48,22 @@ const App: () => React$Node = () => {
             <PaperProvider>
                 <NavigationContainer>
                     <Stack.Navigator initialRouteName="Login">
-                        <Stack.Screen name="Login" component={LoginScreen} />
+                        <Stack.Screen name="Login" component={LoginScreen} options={{
+                            title: 'Gastitos',
+                            headerTitleAlign: 'center'
+                        }}/>
                         <Stack.Screen name="Home" component={HomeScreen} options={{
-                            title: 'Registros'
+                            title: 'Registros',
+                            headerTitleAlign: 'center'
                         }} />
                         <Stack.Screen name="Profile" component={ProfileScreen} />
                         <Stack.Screen name="RegistroForm" component={FormScreen} options={{
-                            title: 'Registro'
+                            title: 'Registro',
+                            headerTitleAlign: 'center'
                         }} />
                         <Stack.Screen name="Details" component={DetailsScreen} options={{
-                            title: "Detalles"
+                            title: "Detalles",
+                            headerTitleAlign: 'center'
                         }} />
                     </Stack.Navigator>
                 </NavigationContainer>
