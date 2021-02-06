@@ -9,12 +9,14 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import {
     View,
     Text,
-    TextInput,
-    Button,
     ActivityIndicator
 } from 'react-native';
 
-import { RadioButton } from 'react-native-paper';
+import { 
+    Button,
+    TextInput,
+    RadioButton 
+} from 'react-native-paper';
 
 class Form extends React.Component {
     state = {
@@ -87,8 +89,12 @@ class Form extends React.Component {
     }
 
     render() {
-        const importe = this.state.importe;
-
+        let pregunta = '¿En qué gasté dinero?';
+        
+        if(this.state.multiplicador > 0) {
+            pregunta = '¿De donde obtuve dinero?';
+        }
+        
         return (<>
             <View style={{ padding: 15 }}>
                 <RadioButton.Group onValueChange={this.onMultiplicadorChange} value={this.state.multiplicador}>
@@ -97,12 +103,14 @@ class Form extends React.Component {
                 </RadioButton.Group>
                 <Text>Descripción</Text>
                 <TextInput
-                    placeholder="¿En qué gasté dinero?"
+                    style={{marginBottom: 15}}
+                    placeholder={pregunta}
                     value={this.state.descripcion}
                     onChangeText={this.onDescripcionChange}
                     editable={!this.props.loading} />
                 <Text>Importe</Text>
                 <TextInput
+                    style={{marginBottom: 15}}
                     placeholder="¿Cuánto costó?"
                     keyboardType="number-pad"
                     value={this.state.importe.toString()}
@@ -136,7 +144,8 @@ class Form extends React.Component {
                     this.props.loading ?
                         <ActivityIndicator size="large" color="#0000ff" /> :
                         <Button
-                            title="Guardar"
+                            mode="contained"
+                            style={{marginTop: 15}}
                             onPress={() => {
                                 //this.props.navigation.replace('Home');
                                 if (this.state.uuid != null) {
@@ -165,7 +174,7 @@ class Form extends React.Component {
                                     );
                                 }
                             }}
-                        />
+                        >Guardar</Button>
                 }
             </View>
         </>);

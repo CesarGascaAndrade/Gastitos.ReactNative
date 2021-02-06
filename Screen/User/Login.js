@@ -10,9 +10,9 @@ import {
     ActivityIndicator
 } from 'react-native';
 
-import { 
+import {
     Button,
-    TextInput 
+    TextInput
 } from 'react-native-paper';
 
 class Login extends React.Component {
@@ -49,7 +49,14 @@ class Login extends React.Component {
         }
 
         return (
-            <View style={{ flex: 1, padding: 15/*, alignItems: 'center', justifyContent: 'center' */ }}>
+            <View style={{ flex: 1, padding: 15, justifyContent: 'center' }}>
+                <Text style={{
+                    textAlign: 'center',
+                    paddingBottom: 45,
+                    fontSize: 45
+                }}>
+                    Gastitos App
+                </Text>
                 <TextInput
                     label="Correo electrónico"
                     keyboardType="email-address"
@@ -57,17 +64,19 @@ class Login extends React.Component {
                 <TextInput
                     label="Contraseña"
                     secureTextEntry={true}
+                    style={{ marginTop: 15 }}
                     onChangeText={this.onPasswordChange} />
-                {error}
                 {this.props.loading ?
-                    <ActivityIndicator size="large" color="#0000ff" /> :
+                    <ActivityIndicator style={{ marginTop: 15 }} size="large" color="#0000ff" /> :
                     <Button
                         mode="contained"
                         title="Login"
+                        style={{ marginTop: 15 }}
                         onPress={() => {
                             this.props.onAuth(this.state.correo, this.state.password);
                         }}
                     >Login</Button>}
+                {error}
             </View>
         );
     }

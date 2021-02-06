@@ -50,7 +50,8 @@ const App: () => React$Node = () => {
                     <Stack.Navigator initialRouteName="Login">
                         <Stack.Screen name="Login" component={LoginScreen} options={{
                             title: 'Gastitos',
-                            headerTitleAlign: 'center'
+                            headerTitleAlign: 'center',
+                            headerShown: false
                         }}/>
                         <Stack.Screen name="Home" component={HomeScreen} options={{
                             title: 'Registros',
